@@ -17,19 +17,7 @@ BREAK_MINUTES = 5
 CYCLES = 2
 ENABLE_SOUND = True
 
-# =========================
-# Browser Notification
-# =========================
-def notify(title, message):
-    display(HTML(f"""
-    <script>
-        if (Notification.permission !== "granted") {{
-            Notification.requestPermission();
-        }} else {{
-            new Notification("{title}", {{ body: "{message}" }});
-        }}
-    </script>
-    """))
+
 
 # =========================
 # Audio Utilities
