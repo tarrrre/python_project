@@ -1,13 +1,7 @@
-"""
-Colab Work Timer
-- Pomodoro-style work/break timer
-- Browser notification + Colab audio
-"""
-
 import time
 import numpy as np
 from datetime import datetime
-from IPython.display import display, HTML, Audio
+from IPython.display import display, Audio
 
 # =========================
 # 설정(Configuration)
@@ -16,8 +10,6 @@ WORK_MINUTES = 25
 BREAK_MINUTES = 5
 CYCLES = 2
 ENABLE_SOUND = True
-
-
 
 # =========================
 # 오디오(Audio Utilities)
@@ -73,24 +65,19 @@ def play_sound(kind):
 def run_timer(minutes, label):
     print(f"\n⏳ {label} started ({minutes} min)")
     time.sleep(minutes * 60)
-
     now = datetime.now().strftime("%H:%M")
     print(f"🔔 {label} finished - {now}")
-
-    notify(f"{label} finished", f"{now} - move to next step")
-
+    # notify 제거
     play_sound("work_end" if label == "Work" else "break_end")
 
 def pomodoro(work, rest, cycles):
     print("🍅 Pomodoro Timer Started")
-
     for i in range(1, cycles + 1):
         print(f"\n▶ Cycle {i}/{cycles}")
         run_timer(work, "Work")
         run_timer(rest, "Break")
-
     print("\n🎉 All cycles completed")
-    notify("Timer Completed", "All work cycles are done 🎉")
+    # notify 제거
     play_sound("all_done")
 
 # =========================
