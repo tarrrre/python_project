@@ -10,7 +10,7 @@ from datetime import datetime
 from IPython.display import display, HTML, Audio
 
 # =========================
-# Configuration
+# 설정(Configuration)
 # =========================
 WORK_MINUTES = 25
 BREAK_MINUTES = 5
@@ -20,7 +20,7 @@ ENABLE_SOUND = True
 
 
 # =========================
-# Audio Utilities
+# 오디오(Audio Utilities)
 # =========================
 def _play_wave(wave, sr=44100):
     display(Audio(wave, rate=sr, autoplay=True))
@@ -31,7 +31,7 @@ def _beep(freq, duration):
     return np.sin(2 * np.pi * freq * t)
 
 # =========================
-# Sound Patterns
+# 사운드 패턴(Sound Patterns)
 # =========================
 def sound_work_end():
     wave = np.concatenate([
@@ -68,7 +68,7 @@ def play_sound(kind):
         sound_all_done()
 
 # =========================
-# Timer Logic
+# 타이머 로직(Timer Logic)
 # =========================
 def run_timer(minutes, label):
     print(f"\n⏳ {label} started ({minutes} min)")
@@ -94,7 +94,7 @@ def pomodoro(work, rest, cycles):
     play_sound("all_done")
 
 # =========================
-# Entry Point
+# 메인 실행부(Entry Point)
 # =========================
 if __name__ == "__main__":
     pomodoro(WORK_MINUTES, BREAK_MINUTES, CYCLES)
